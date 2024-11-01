@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sound Forge Studios</title>
+    <style>
+        /* Reset styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        /* General styling */
+        body {
+            background-color: #121212;
+            color: #ffffff;
+        }
+
+        /* Header styling */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 30px;
+            background-color: #000000;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #1DB954;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .sign-up {
+            background-color: #1DB954;
+            padding: 8px 16px;
+            border-radius: 20px;
+            color: #ffffff;
+            font-weight: bold;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        /* Banner styling */
+        .banner {
+            background: url('https://via.placeholder.com/1200x500') no-repeat center center/cover;
+            color: #ffffff;
+            padding: 100px 20px;
+            text-align: center;
+            position: relative;
+        }
+
+        .banner::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+        }
+
+        .banner-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .banner h1 {
+            font-size: 48px;
+            margin-bottom: 10px;
+        }
+
+        .banner p {
+            font-size: 20px;
+            margin-bottom: 20px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .banner button {
+            background-color: #1DB954;
+            color: #ffffff;
+            padding: 10px 30px;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        /* Content Section Styling */
+        .content-section {
+            display: none;
+            padding: 40px 30px;
+            background-color: #121212;
+            color: #ffffff;
+            text-align: center;
+        }
+
+        .content-section h2 {
+            font-size: 28px;
+            margin-bottom: 20px;
+        }
+
+        .playlists, .albums, .genres, .radio-stations {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .playlist, .album, .genre, .station {
+            width: 200px;
+            text-align: center;
+        }
+
+        .playlist img, .album img, .genre img, .station img {
+            width: 100%;
+            border-radius: 8px;
+        }
+
+        .playlist p, .album p, .genre p, .station p {
+            color: #ccc;
+            font-size: 16px;
+            margin-top: 8px;
+        }
+
+        /* Footer styling */
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #000000;
+            color: #777;
+            font-size: 14px;
+        }
+
+        footer a {
+            color: #777;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Sign-Up Form */
+        .sign-up-page form {
+            display: flex;
+            flex-direction: column;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        .sign-up-page form input {
+            padding: 10px;
+            margin-bottom: 15px;
+            border-radius: 4px;
+            border: none;
+            font-size: 16px;
+        }
+
+        .sign-up-page form button {
+            padding: 12px;
+            background-color: #1DB954;
+            border: none;
+            border-radius: 4px;
+            color: #ffffff;
+            font-size: 18px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="logo">Sound Forge Studios</div>
+        <nav>
+            <ul>
+                <li><a onclick="showPage('home')">Home</a></li>
+                <li><a onclick="showPage('browse')">Browse</a></li>
+                <li><a onclick="showPage('genres')">Genres</a></li>
+                <li><a onclick="showPage('radio')">Radio</a></li>
+                <li><a onclick="showPage('signUp')">Sign Up</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Banner -->
+    <section class="banner" id="home">
+        <div class="banner-content">
+            <h1>Listen to Your Favorite Tunes</h1>
+            <p>Explore playlists, discover new artists, and enjoy music anytime, anywhere.</p>
+            <button onclick="showPage('signUp')">Get Started</button>
+        </div>
+    </section>
+
+    <!-- Browse Page -->
+    <section class="content-section" id="browsePage">
+        <h2>Popular Albums</h2>
+        <div class="albums">
+            <div class="album">
+                <img src="https://image-cdn-ak.spotifycdn.com/image/ab67706c0000da840774a242a12ead585708fa16" alt="Album 1">
+                <p>Rock Classics</p>
+            </div>
+            <div class="album">
+                <img src="https://image-cdn-ak.spotifycdn.com/image/ab67706c0000da84c5447956f436e2cd82cda76a" alt="Album 2">
+                <p>Indie Essentials</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Genres Page -->
+    <section class="content-section" id="genresPage">
+        <h2>Explore Genres</h2>
+        <div class="genres">
+            <div class="genre">
+                <img src="https://image-cdn-ak.spotifycdn.com/image/ab67706c0000da8432ac2147f90baca05fa30a39" alt="Genre 1">
+                <p>Hip Hop</p>
+            </div>
+            <div class="genre">
+                <img src="https://preview.redd.it/a-few-cover-artworks-for-jazz-playlists-v0-lbhar6wd24ec1.png?width=1024&format=png&auto=webp&s=92661df1fa83302cf17886ec404ed452a9dd7eb8" alt="Genre 2">
+                <p>Jazz</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Radio Page -->
+    <section class="content-section" id="radioPage">
+        <h2>Top Radio Stations</h2>
+        <div class="radio-stations">
+            <div class="station">
+                <img src="https://marketplace.canva.com/EAFMTCSbVoc/1/0/1600w/canva-tosca-yellow-white-simple-aesthetic-pop-hits-song-playlist-cover-xKqnnrGBve0.jpg" alt="Station 1">
+                <p>Pop Hits</p>
+            </div>
+            <div class="station">
+                <img src="https://i.pinimg.com/474x/d0/3d/5f/d03d5f0d9d16b8d3e61e938e8fd12c33.jpg" alt="Station 2">
+                <p>Classic Rock</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sign-Up Page -->
+    <section class="content-section sign-up-page" id="signUpPage">
+        <h2>Sign Up for Sound Forge Studios</h2>
+        <form>
+            <input type="text" placeholder="Full Name" required>
+            <input type="email" placeholder="Email" required>
+            <input type="password" placeholder="Password" required>
+            <button type="submit">Create Account</button>
+        </form>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2023 Sound Forge Studios | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a> | <a href="#">Help</a></p>
+    </footer>
+
+    <script>
+        function showPage(page) {
+            const sections = ['home', 'browsePage', 'genresPage', 'radioPage', 'signUpPage'];
+            sections.forEach(section => {
+                document.getElementById(section).style.display = section === page + 'Page' ? 'block' : 'none';
+            });
+            if (page === 'home') {
+                document.getElementById('home').style.display = 'block';
+            }
+        }
+    </script>
+</body>
+</html>
